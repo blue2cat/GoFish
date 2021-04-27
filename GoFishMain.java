@@ -26,11 +26,12 @@ import java.util.Random;
 
 public class GoFishMain {
 
-	// TODO: no class constants
-	private static final int STARTING_HAND_SIZE = 7;
-
 	// main
 	public static void main(String[] args) {
+
+
+		//starting hand size 
+		int startingHand = 7;
 
 		// create a new deck of cards
 		ArrayList<Integer> deck = newDeck();
@@ -42,11 +43,11 @@ public class GoFishMain {
 		Collections.shuffle(deck);
 
 		// play a game
-		playOneGame(deck, input);
+		playOneGame(deck, input, startingHand);
 	}
 
 	// Plays one game.
-	public static void playOneGame(ArrayList<Integer> deck, Scanner input) {
+	public static void playOneGame(ArrayList<Integer> deck, Scanner input, int deckSize) {
 
 		// Emptry array of cards in the hand
 		ArrayList<Integer> computer = new ArrayList<Integer>();
@@ -57,7 +58,7 @@ public class GoFishMain {
 		ArrayList<Integer> humanPile = new ArrayList<Integer>();
 
 		// Deals cards to user and computer
-		dealHands(deck, human, computer);
+		dealHands(deck, human, computer, deckSize);
 
 		// Displays card-hand to user
 		showGame(human, computerPile, humanPile);
@@ -240,7 +241,7 @@ public class GoFishMain {
 	}
 
 	// Deals even shuffled cards from deck to each player
-	public static void dealHands(ArrayList<Integer> deck, ArrayList<Integer> hand1, ArrayList<Integer> hand2) {
+	public static void dealHands(ArrayList<Integer> deck, ArrayList<Integer> hand1, ArrayList<Integer> hand2, int handSize) {
 
 		// generate a random number
 		Random randomNumber = new Random();
@@ -248,7 +249,7 @@ public class GoFishMain {
 		// keep track of iterations
 		int count = 0;
 
-		while (count <= STARTING_HAND_SIZE) {
+		while (count <= handSize) {
 			int randomIndex = randomNumber.nextInt(deck.size());
 			hand1.add(deck.get(randomIndex));
 			deck.remove(deck.get(randomIndex));
@@ -257,7 +258,7 @@ public class GoFishMain {
 
 		count = 0;
 
-		while (count <= STARTING_HAND_SIZE) {
+		while (count <= handSize) {
 			int randomIndex = randomNumber.nextInt(deck.size());
 			hand2.add(deck.get(randomIndex));
 			deck.remove(deck.get(randomIndex));
