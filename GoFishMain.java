@@ -118,7 +118,6 @@ public class GoFishMain {
 
 			} else if (!deck.isEmpty()) {
 
-				// TODO: Let the computer draw from the deck
 				int cardFromPile = randomNumber.nextInt(deck.size());
 				computer.add(deck.get(cardFromPile));
 				deck.remove(cardFromPile);
@@ -198,8 +197,7 @@ public class GoFishMain {
 			int cardFromPile = randomNumber.nextInt(deck.size());
 			requester.add(deck.get(cardFromPile));
 			deck.remove(cardFromPile);
-
-			// TODO: If there is a set of four matching cards, put them on the table
+			
 			int books = 0;
 
 			for (int x = 0; x < requester.size(); x++) {
